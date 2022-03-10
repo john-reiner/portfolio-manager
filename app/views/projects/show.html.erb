@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p style="color: green"><%= notice %></p>
+
+      <%= render @project %>
+
+      <div>
+        <%= link_to "Edit this project", edit_project_path(@project) %> |
+        <%= link_to "Back", portfolio_path(params["portfolio_id"]) %>
+
+        <%= button_to "Destroy this project", @project, method: :delete %>
+      </div>    
+    </div>
+  </div>
+</div>
+

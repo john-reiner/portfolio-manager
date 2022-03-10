@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p style="color: green"><%= notice %></p>
+
+      <p>About</p>
+      <%= link_to  "Edit", edit_portfolio_path(@portfolio) %>
+      <p>Main Photo</p>
+      <%= image_tag @portfolio.about_photo%>
+      <p>Welcome Message</p>
+      <p><%= @portfolio.welcome_message %></p>
+      <p>Text</p>
+      <p><%= @portfolio.about_me_text %></p>
+
+      <p>Projects</p>
+      <%= link_to  "Add", new_project_path(portfolio_id: @portfolio.id) %>
+      <% @portfolio.projects.each do |project| %>
+        <p class="project-name"><%= project.name %></p>
+        <%= link_to "Show" , project_path(portfolio_id: @portfolio.id) %>
+        <%= link_to "Edit" , edit_project_path(project, portfolio_id: @portfolio.id) %>
+      <% end %>
+
+      <p>Skill Categories</p>
+      <%= link_to  "Add", new_skill_category_path %>
+      <% @portfolio.skill_categories.each do |s_c| %>
+        <%= link_to  s_c.name, s_c %>
+      <% end %>
+    
+    </div>
+  </div>
+</div>
+

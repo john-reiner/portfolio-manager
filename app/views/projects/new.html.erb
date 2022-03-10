@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>New project</h1>
+
+        <%= render "form", project: @project %>
+
+      <br>
+
+      <div>
+        <%= link_to "Back", portfolio_path(params["portfolio_id"]) %>
+      </div>
+    </div>
+  </div>
+</div>

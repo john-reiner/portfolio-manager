@@ -10,15 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_09_114844) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_09_151747) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "users", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
+    t.bigint "portfolio_id", null: false
+    t.string "name"
     t.string "email"
-    t.string "password_digest"
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["portfolio_id"], name: "index_messages_on_portfolio_id"
   end
 
+  create_table "portfolios", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "welcome_message"
+    t.text "about_me_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "about_photo"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.bigint "portfolio_id", null: false
+    t.string "name"
+    t.text "description"
+    t.string "github"
+    t.string "url"
+    t.text "main_image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["portfolio_id"], name: "index_projects_on_portfolio_id"
+  end
+
+  create_table "skill_categories", force: :cascade do |t|
+    t.string "name"
+    t.bigint "portfolio_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["portfolio_id"], name: "index_skill_categories_on_portfolio_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.bigint "skill_category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_category_id"], name: "index_skills_on_skill_category_id"
+  end
+
+  add_foreign_key "messages", "portfolios"
+  add_foreign_key "projects", "portfolios"
+  add_foreign_key "skill_categories", "portfolios"
+  add_foreign_key "skills", "skill_categories"
 end

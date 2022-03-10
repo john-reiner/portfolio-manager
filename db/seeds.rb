@@ -5,3 +5,62 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Portfolio.create!(
+    email: "johnnyreiner@gmail.com",
+    password: "password",
+    welcome_message: "Hi! I'm John.",
+    about_me_text: "This is coming from my rails api portfolio manager!",
+    about_photo: "https://media-exp1.licdn.com/dms/image/C4D03AQGBtZ9WqHNY2A/profile-displayphoto-shrink_800_800/0/1613566150473?e=1652313600&v=beta&t=i6GtRTUp_3GMxgtGyRDSHIKgcKnufu9Q_PFC29BoUa8",
+)
+
+Project.create!(
+    portfolio_id: 1,
+    name: "My Portfolio",
+    description: "My portfolio which you are currently vieing! This was built on a React front end client connecting to my Portfolio Manager which send the JSON information. Please see my other project 'Portfolio Manger' for more information.",
+    github: "https://github.com/john-reiner/portfolio-react",
+    url: '/',
+    main_image_url: "./assets/images/portfolio-main.png"
+)
+
+SkillCategory.create!(
+    name: "Languages",
+    portfolio_id: 1,
+
+)
+SkillCategory.create!(
+    name: "Frameworks",
+    portfolio_id: 1,
+    
+)
+SkillCategory.create!(
+    name: "Technologies",
+    portfolio_id: 1,
+    
+)
+
+Skill.create!(
+    name: "Ruby", icon: "logos:ruby", skill_category_id: 1
+)
+Skill.create!(
+    name: "JavaScript", icon: "logos:javascript", skill_category_id: 1
+)
+Skill.create!(
+    name: "Node JS", icon: "vscode-icons:file-type-node", skill_category_id: 1
+)
+Skill.create!(
+    name: "Python", icon: "vscode-icons:file-type-python", skill_category_id: 1
+)
+Skill.create!(
+    name: "HTML", icon: "logos:html-5", skill_category_id: 1
+)
+Skill.create!(
+    name: "CSS", icon: "logos:css-3", skill_category_id: 1
+)
+
+Message.create!(
+    name: "Test Sender",
+    email: "testsender@test.com",
+    message: "testing get requests",
+    portfolio_id: 1
+)
