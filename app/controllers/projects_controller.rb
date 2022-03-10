@@ -1,9 +1,9 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_access
   # GET /projects or /projects.json
   def index
-    @projects = Project.all
+    @projects = @portfolio.projects.all
   end
 
   # GET /projects/1 or /projects/1.json
@@ -12,7 +12,6 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-
     @project = Project.new
   end
 

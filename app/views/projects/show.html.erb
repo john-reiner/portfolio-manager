@@ -7,7 +7,7 @@
 
       <div>
         <%= link_to "Edit this project", edit_project_path(@project) %> |
-        <%= link_to "Back", portfolio_path(params["portfolio_id"]) %>
+        <%= link_to "Back", portfolio_path(@portfolio) %>
 
         <%= button_to "Destroy this project", @project, method: :delete %>
       </div>    

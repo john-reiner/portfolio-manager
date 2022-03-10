@@ -13,11 +13,11 @@
       <p><%= @portfolio.about_me_text %></p>
 
       <p>Projects</p>
-      <%= link_to  "Add", new_project_path(portfolio_id: @portfolio.id) %>
+      <%= link_to  "Add", new_project_path %>
       <% @portfolio.projects.each do |project| %>
         <p class="project-name"><%= project.name %></p>
-        <%= link_to "Show" , project_path(portfolio_id: @portfolio.id) %>
-        <%= link_to "Edit" , edit_project_path(project, portfolio_id: @portfolio.id) %>
+        <%= link_to "Show" , project_path(project) %>
+        <%= link_to "Edit" , edit_project_path(project) %>
       <% end %>
 
       <p>Skill Categories</p>
