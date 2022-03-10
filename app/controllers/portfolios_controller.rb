@@ -1,10 +1,6 @@
 class PortfoliosController < ApplicationController
-  before_action :set_portfolio, only: %i[ show edit update destroy ]
-
-  # GET /portfolios or /portfolios.json
-  def index
-    @portfolios = Portfolio.all
-  end
+  # before_action :set_portfolio, only: %i[ show edit update destroy ]
+  before_action :authenticate_access, only: %i[ show edit update destroy ]
 
   # GET /portfolios/1 or /portfolios/1.json
   def show
@@ -13,7 +9,6 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios/new
   def new
-
     @portfolio = Portfolio.new
   end
 

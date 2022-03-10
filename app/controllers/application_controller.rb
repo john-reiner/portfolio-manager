@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     skip_before_action :verify_authenticity_token
-    
+
     def authenticate_access
 
         if session[:token]
@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
                 session[:token] = nil
                 redirect_to root_path
             end
-        # else
-        #     redirect_to new_session_path
+        else
+            redirect_to root_path
         end
     end
 end
