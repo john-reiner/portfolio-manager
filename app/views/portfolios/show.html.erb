@@ -6,7 +6,7 @@
       <p>About</p>
       <%= link_to  "Edit", edit_portfolio_path(@portfolio) %>
       <p>Main Photo</p>
-      <%= image_tag @portfolio.about_photo%>
+      <%= image_tag @portfolio.about_photo, width: "300"%>
       <p>Welcome Message</p>
       <p><%= @portfolio.welcome_message %></p>
       <p>Text</p>
@@ -25,6 +25,15 @@
       <% @portfolio.skill_categories.each do |s_c| %>
         <%= link_to  s_c.name, s_c %>
       <% end %>
+
+      <p>Messages</p>
+      <%= link_to  "All Messages", portfolio_messages_path(@portfolio) %>
+      <%= @portfolio.messages.count %>
+      <p>Last Message:</p>
+      <p><%= @portfolio.messages.last.name %></p>
+      <p><%= @portfolio.messages.last.email %></p>
+      <p><%= @portfolio.messages.last.message %></p>
+      
     
     </div>
   </div>

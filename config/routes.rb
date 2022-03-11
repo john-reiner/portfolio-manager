@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'sessions/login'
-  get 'sessions/logout'
   resources :skills
   resources :skill_categories
+  get 'sessions/login'
+  get 'sessions/logout'
   resources :projects
   resources :portfolios do 
     resources :messages
@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
   post "/login", to: "sessions#login"
+  get "/portfolios/:id/public", to: "portfolios#public"
 end

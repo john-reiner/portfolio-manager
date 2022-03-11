@@ -1,10 +1,14 @@
 class PortfoliosController < ApplicationController
-  # before_action :set_portfolio, only: %i[ show edit update destroy ]
+  before_action :set_portfolio, only: %i[ public ]
   before_action :authenticate_access, only: %i[ show edit update destroy ]
 
   # GET /portfolios/1 or /portfolios/1.json
   def show
 
+  end
+
+  def public
+    # byebug
   end
 
   # GET /portfolios/new
@@ -62,6 +66,6 @@ class PortfoliosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def portfolio_params
-      params.require(:portfolio).permit(:email, :password_digest, :welcome_message, :about_me_text)
+      params.require(:portfolio).permit( :email, :password_digest, :welcome_message, :about_me_text)
     end
 end
