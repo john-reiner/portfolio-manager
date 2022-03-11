@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   </head>
 
+  <header>
+    <% if @portfolio %>
+      <%= render  "layouts/navbars/signed_in" %>
+      
+    <% end %>
+      
+  </header>
+
   <body>
     <%= yield %>
   </body>

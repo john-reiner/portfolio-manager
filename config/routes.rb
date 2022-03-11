@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
   post "/login", to: "sessions#login"
+  get "/logout", to: "sessions#logout"
   get "/portfolios/:id/public", to: "portfolios#public"
 end
