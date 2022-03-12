@@ -9,15 +9,15 @@
                     <%= link_to  @portfolio.email, portfolio_path(@portfolio), class: "nav-link active" %>
                 </li>
             </ul>
-            
-            <li class="nav-item d-flex">
-                <%= link_to  "Sign Out", logout_path, class: "nav-link active" %>
-            </li>
             <% if flash[:notice] %>
                 <div id="passwordHelpInline" class="text-info" style="margin-right: 1em;">
                     <%= flash[:notice] %>
                 </div>
             <% end %>
+            
+            <li class="nav-item d-flex">
+                <%= link_to  "Sign Out", logout_path, class: "nav-link active" %>
+            </li>
         
         </div>
     </div>

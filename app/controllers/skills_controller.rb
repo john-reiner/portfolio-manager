@@ -1,9 +1,11 @@
 class SkillsController < ApplicationController
   before_action :set_skill, only: %i[ show edit update destroy ]
+  before_action :set_skill_category, only: %i[ index new create update]
+  before_action :authenticate_access
 
   # GET /skills or /skills.json
   def index
-    @skills = Skill.all
+    @skills = @skill_category.skills
   end
 
   # GET /skills/1 or /skills/1.json
@@ -12,20 +14,24 @@ class SkillsController < ApplicationController
 
   # GET /skills/new
   def new
-    @skill = Skill.new
-  end
+    # byebug
+    @skill = @skill_category.skills.build
 
+  end
+  
   # GET /skills/1/edit
   def edit
-  end
 
+  end
+  
   # POST /skills or /skills.json
   def create
-    @skill = Skill.new(skill_params)
 
+    @skill = @skill_category.skills.build(skill_params)
+    
     respond_to do |format|
       if @skill.save
-        format.html { redirect_to skill_url(@skill), notice: "Skill was successfully created." }
+        format.html { redirect_to @portfolio, notice: "Skill was successfully created." }
         format.json { render :show, status: :created, location: @skill }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +44,7 @@ class SkillsController < ApplicationController
   def update
     respond_to do |format|
       if @skill.update(skill_params)
-        format.html { redirect_to skill_url(@skill), notice: "Skill was successfully updated." }
+        format.html { redirect_to skill_categories_path(@skill_category), notice: "Skill was successfully updated." }
         format.json { render :show, status: :ok, location: @skill }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,6 +65,12 @@ class SkillsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def set_skill_category
+
+      @skill_category = SkillCategory.find(params[:skill_category_id])
+    end
+
     def set_skill
       @skill = Skill.find(params[:id])
     end

@@ -1,18 +1,33 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <p style="color: green"><%= notice %></p>
-
-      <h1>Messages</h1>
-
-      <div id="messages">
-        <% @messages.each do |message| %>
-          <%= render message %>
-        <% end %>
+  <div class="row mt-5">
+    <div class="col section">
+      <div class="row ">
+        <div class="col section-heading">
+          <h1>Messages</h1>
+          <%= link_to  "Back", portfolio_path(@portfolio) %>             
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Message</th>
+            </tr>
+            <% @messages.each do |message| %>
+              <tr>
+                <td><%= message.name %></td>
+                
+                <td><%= mail_to message.email %></td>
+                <td><%= message.message %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
       </div>
 
-      <%= link_to  "Back", portfolio_path(@portfolio) %>    
+ 
     </div>
   </div>
 </div>
-

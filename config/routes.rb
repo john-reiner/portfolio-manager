@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-  resources :skills
-  resources :skill_categories
+  
   get 'sessions/login'
   get 'sessions/logout'
-  resources :projects
   resources :portfolios do 
+    resources :projects
+    resources :skill_categories do 
+      resources :skills
+    end
     resources :messages
   end
-
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

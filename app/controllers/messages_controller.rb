@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: %i[ show edit update destroy ]
-  before_action :authenticate_access
+  before_action :authenticate_access, only: %i[ index show destroy]
 
   # GET /messages or /messages.json
   def index
@@ -23,13 +23,11 @@ class MessagesController < ApplicationController
   # POST /messages or /messages.json
   def create
     @message = Message.new(message_params)
-
+    @message.portfolio_id = params["portfolio_id"]
     respond_to do |format|
       if @message.save
-        format.html { redirect_to message_url(@message), notice: "Message was successfully created." }
-        format.json { render :show, status: :created, location: @message }
+        format.json { render json: @message, status: :created }
       else
-        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end

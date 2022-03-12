@@ -11,7 +11,6 @@ Portfolio.create!(
     password: "password",
     welcome_message: "Hi! I'm John.",
     about_me_text: "This is coming from my rails api portfolio manager!",
-    about_photo: "https://media-exp1.licdn.com/dms/image/C4D03AQGBtZ9WqHNY2A/profile-displayphoto-shrink_800_800/0/1613566150473?e=1652313600&v=beta&t=i6GtRTUp_3GMxgtGyRDSHIKgcKnufu9Q_PFC29BoUa8",
 )
 
 Project.create!(

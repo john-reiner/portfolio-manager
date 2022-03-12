@@ -1,40 +1,109 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <p style="color: green"><%= notice %></p>
+  <div class="row justify-content-around">
 
-      <p>About</p>
-      <%= link_to  "Edit", edit_portfolio_path(@portfolio) %>
-      <p>Main Photo</p>
-      <%= image_tag @portfolio.about_photo, width: "300"%>
-      <p>Welcome Message</p>
-      <p><%= @portfolio.welcome_message %></p>
-      <p>Text</p>
-      <p><%= @portfolio.about_me_text %></p>
+    <div class="col-sm-4 ">
 
-      <p>Projects</p>
-      <%= link_to  "Add", new_project_path %>
-      <% @portfolio.projects.each do |project| %>
-        <p class="project-name"><%= project.name %></p>
-        <%= link_to "Show" , project_path(project) %>
-        <%= link_to "Edit" , edit_project_path(project) %>
-      <% end %>
-
-      <p>Skill Categories</p>
-      <%= link_to  "Add", new_skill_category_path %>
-      <% @portfolio.skill_categories.each do |s_c| %>
-        <%= link_to  s_c.name, s_c %>
-      <% end %>
-
-      <p>Messages</p>
-      <%= link_to  "All Messages", portfolio_messages_path(@portfolio) %>
-      <%= @portfolio.messages.count %>
-      <p>Last Message:</p>
-      <p><%= @portfolio.messages.last.name %></p>
-      <p><%= @portfolio.messages.last.email %></p>
-      <p><%= @portfolio.messages.last.message %></p>
-      
+      <div class="row">
+        <div class="col section mt-3">
+          <div class="row">
+            <div class="col section-heading">
+              <h2><%= link_to  "Messages", portfolio_messages_path(@portfolio) %></h2>
+              <span><%= @portfolio.messages.count %></span>
+            </div>
+            <hr>
+          </div>
+          <div class="row">
+            <div class="col section-content">
+              <p><%= @portfolio.messages.last.name %>:</p>
+              <p><%= @portfolio.messages.last.message %></p>                
+            </div>
+          </div>
     
+        </div>
+      </div>
+
+    </div>  
+    <div class="col-sm-7">
+
+        <div class="row">
+          <div class="col section mt-3">
+            <div class="row">
+              <div class="col section-heading">
+                <h2>About</h2>
+                <%= link_to  "Edit", edit_portfolio_path(@portfolio) %>
+              </div>
+              <hr>
+            </div>
+            <div class="row">
+              <div class="col section-content">
+                <h4>Main Photo:</h4>
+                <%= image_tag @portfolio.image, id: "main-photo" %>
+              </div>
+              <div class="col section-content">
+                <h4>Welcome Message:</h4>
+                <p><%= @portfolio.welcome_message %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col section-content">
+                <h4>About Me:</h4>
+                <p><%= @portfolio.about_me_text %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="col section mt-3">
+          <div class="row">
+            <div class="col section-heading">
+              <h2>Projects</h2>
+              <%= link_to  "Add", new_portfolio_project_path(@portfolio) %>
+            </div>
+            <hr>
+          </div>
+          <div class="row row-cols-4">
+            <% @portfolio.projects.each do |project| %>
+              <div class="col section-content project">
+                <p><%= link_to project.name , portfolio_project_path(@portfolio, project) %></p>
+                <%= link_to "Edit" , edit_portfolio_project_path(@portfolio, project) %>
+              </div>
+            <% end %>            
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col section mt-3 mb-5">
+          <div class="row">
+            <div class="col section-heading">
+              <h2>Skill Categories</h2>
+              <%= link_to  "Add", new_portfolio_skill_category_path(@portfolio) %>            
+            </div>
+          </div>
+          <div class="row">
+            <div class="col section-content">
+              <table>
+                <tr>
+                  <th>Name</th>
+                  <th class="text-center">Skills</th>
+                  <th>Edit</th>
+                </tr>
+                <% @portfolio.skill_categories.each do |skill_category| %>
+                  <tr>
+                    <td><%= link_to  skill_category.name, portfolio_skill_category_path(@portfolio, skill_category) %></td>
+                    <td class="text-center"><%= skill_category.skills.count %></td>
+                    <td><%= link_to  "Edit", edit_portfolio_skill_category_path(skill_category) %></td>
+                  </tr>
+                  
+                <% end %>              
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 </div>

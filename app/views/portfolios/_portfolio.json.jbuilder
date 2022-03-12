@@ -6,6 +6,9 @@ json.projects(portfolio.projects) do |project|
     json.github project.github
     json.url project.url
     json.main_image_url project.main_image_url
+    json.images(project.images) do |image|
+        json.image_url url_for(image)
+    end
 end
 
 json.skills(portfolio.skill_categories) do |category|
@@ -17,5 +20,6 @@ json.skills(portfolio.skill_categories) do |category|
         json.icon skill.icon
     end
 end
+json.image_url url_for(portfolio.image)
 
 json.url portfolio_url(portfolio, format: :json)

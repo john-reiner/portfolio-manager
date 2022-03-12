@@ -11,6 +11,17 @@
     </div>
   <% end %>
 
+  
+  <% if @portfolio.image.attached? %>
+    <%= image_tag @portfolio.image, id: "main-photo" %>
+  <% end %>
+  
+
+  <div>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
   <div>
     <%= form.label :welcome_message, style: "display: block" %>
     <%= form.text_field :welcome_message %>

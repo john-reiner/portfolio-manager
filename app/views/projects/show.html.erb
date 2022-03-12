@@ -5,11 +5,18 @@
 
       <%= render @project %>
 
+      <% @project.images.each do |image|%>
+
+        <%= image_tag image, id: "main-photo" %>
+      
+      <% end %>
+      
+
       <div>
-        <%= link_to "Edit this project", edit_project_path(@project) %> |
+        <%= link_to "Edit this project", edit_portfolio_project_path(@project) %> |
         <%= link_to "Back", portfolio_path(@portfolio) %>
 
-        <%= button_to "Destroy this project", @project, method: :delete %>
+        <%= button_to "Destroy this project", [@portfolio, @project], method: :delete %>
       </div>    
     </div>
   </div>
