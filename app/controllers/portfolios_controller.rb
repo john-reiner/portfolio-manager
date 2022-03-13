@@ -37,7 +37,7 @@ class PortfoliosController < ApplicationController
 
   # PATCH/PUT /portfolios/1 or /portfolios/1.json
   def update
-
+    
     respond_to do |format|
       if @portfolio.update(portfolio_params)
         format.html { redirect_to portfolio_url(@portfolio), notice: "Portfolio was successfully updated." }
@@ -46,6 +46,16 @@ class PortfoliosController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @portfolio.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def delete_image
+    image = ActiveStorage::Attachment.find(params[:image_id])
+    if @portfolio == image.record
+      image.purge
+      redirect_to @portfolio
+    else
+      redirect_to @portfolio, notice: "Unable to delete that image"
     end
   end
 
@@ -67,6 +77,6 @@ class PortfoliosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def portfolio_params
-      params.require(:portfolio).permit( :email, :password_digest, :welcome_message, :about_me_text, :image)
+      params.require(:portfolio).permit( :email, :password_digest, :welcome_message, :about_me_text, :image )
     end
 end

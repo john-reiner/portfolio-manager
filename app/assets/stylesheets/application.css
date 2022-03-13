@@ -71,3 +71,19 @@ background-color: #555;
 .message-container {
     
 }
+
+.edit-about-image-container {
+    border: solid red;
+}
+
+.project-show-photo {
+    width: 100%;
+}
+
+.project-photos {
+    width: 100%;
+}
+
+.project-photos-container {
+    
+}

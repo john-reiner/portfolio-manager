@@ -1,11 +1,66 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <%= render "form", portfolio: @portfolio %>
-      <br>
+  <div class="row mt-5">
+    <div class="col section">
+      <div class="row ">
+        <div class="col section-heading">
+          <h2>Edit About Information</h2>
+          <%= link_to "Back", @portfolio %> 
+        </div>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col section">
+          <%= form_with(model: @portfolio, id: "about-form") do |form| %>
+            <% if @portfolio.errors.any? %>
+              <div style="color: red">
+                <h2><%= pluralize(@portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
 
-      <div>
-        <%= link_to "Back", @portfolio %> 
+                <ul>
+                  <% @portfolio.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="row justify-content-around">
+              <div class="col-sm-4">
+
+                <% if @portfolio.image.attached? && @portfolio.image.representable?%>
+                  <div class="mb-3">
+                    <%= image_tag @portfolio.image, class: "img-thumbnail", id: "about-form-img" %>
+                  </div>
+                <% end %>
+
+                <div class="mb-3">
+                  <%= form.label :image, class: "form-label" %>
+                  <%= render "inline_fields", form: form, attribute: :image do %>
+                    <%= form.file_field :image, class: "form-control" %>
+                    <%= button_to "Delete", delete_image_portfolio_path(image_id: @portfolio.image.id), :method => :delete_image %>
+                  <% end %>
+                </div>
+
+
+              </div>
+              <div class="col-sm-4">
+                  <div class="mb-3">
+                    <%= form.label :welcome_message, class: "form-label" %>
+                    <%= render "inline_fields", form: form, attribute: :welcome_message do %>
+                      <%= form.text_field :welcome_message, class: "form-control" %>
+                    <% end %>
+                  </div>      
+                <div class="mb-3">
+                  <%= form.label :about_me_text, class: "form-label"  %>
+                  <%= render "inline_fields", form: form, attribute: :about_me_text do %>
+                    <%= form.text_area :about_me_text, class: "form-control" %>
+                  <% end %>
+                </div>
+                <div class="d-grid">
+                  <%= form.submit class: "btn btn-outline-primary" %>
+                </div>
+              </div>    
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

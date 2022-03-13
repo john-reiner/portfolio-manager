@@ -1,4 +1,4 @@
-<%= form_with(model: portfolio) do |form| %>
+<%= form_with(model: portfolio, id: "about-form") do |form| %>
   <% if portfolio.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
@@ -10,29 +10,42 @@
       </ul>
     </div>
   <% end %>
+  <div class="row justify-content-around">
+    <div class="col-sm-4">
 
-  
-  <% if @portfolio.image.attached? %>
-    <%= image_tag @portfolio.image, id: "main-photo" %>
-  <% end %>
-  
+      <div class="mb-3">
+        <%= form.label :image, class: "form-label" %>
+        <%= turbo_frame_tag dom_id(@portfolio, "image_turbo_frame") do %>
+          <%= form.file_field :image, class: "form-control" %>
+          <%= form.button "Save" %>
+          <%= link_to  "Cancel", @portfolio %>
+        <% end %>
+        
+      </div>
 
-  <div>
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
+      <% if @portfolio.image.attached? %>
+        <div class="mb-3">
+          <%= image_tag @portfolio.image, class: "img-thumbnail", id: "about-form-img" %>
+        </div>
+      <% end %>
 
-  <div>
-    <%= form.label :welcome_message, style: "display: block" %>
-    <%= form.text_field :welcome_message %>
-  </div>
-
-  <div>
-    <%= form.label :about_me_text, style: "display: block" %>
-    <%= form.text_area :about_me_text %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    </div>
+    <div class="col-sm-4">
+        <div class="mb-3">
+          <%= form.label :welcome_message, class: "form-label" %>
+          <%= render "inline_fields", form: form, attribute: :welcome_message do %>
+            <%= form.text_field :welcome_message, class: "form-control" %>
+          <% end %>
+        </div>      
+      <div class="mb-3">
+        <%= form.label :about_me_text, class: "form-label"  %>
+        <%= render "inline_fields", form: form, attribute: :about_me_text do %>
+          <%= form.text_area :about_me_text, class: "form-control" %>
+        <% end %>
+      </div>
+      <div class="d-grid">
+        <%= form.submit class: "btn btn-outline-primary" %>
+      </div>
+    </div>    
   </div>
 <% end %>

@@ -1,0 +1,6 @@
+<% frame_id = dom_id(form.object, "#{attribute}_turbo_frame") %>
+<%= turbo_frame_tag frame_id do %>
+    <%= yield %>
+    <%= form.submit "Save", class: "input-group-text" %>
+    <%= link_to  "Cancel", form.object %>
+<% end %>

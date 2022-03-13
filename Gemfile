@@ -75,3 +75,5 @@ end
 # MY ADDED GEMS:
 gem 'rack-cors'
 gem 'jwt'
+gem 'aws-sdk-s3', require: false
+gem 'active_storage_validations'

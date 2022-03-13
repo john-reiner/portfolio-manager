@@ -1,23 +1,84 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <p style="color: green"><%= notice %></p>
-
-      <%= render @project %>
-
-      <% @project.images.each do |image|%>
-
-        <%= image_tag image, id: "main-photo" %>
+  <div class="row mt-5">
+    <div class="col section">
+      <div class="row ">
+        <div class="col section-heading">
+            <h2><%= @project.name %></h2>
+            <%= link_to "Edit", edit_portfolio_project_path(@project) %>
+        </div>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="section-content">
+            <div class="section-heading">
+              <h5>Description:</h5>
+              <%= link_to  "Edit", nil %>
+            </div>
+            <hr>
+            <p><%= @project.description %></p>        
+          </div>
+        </div>
+        <div class="col">
+          <div class="section-content">
+            <div class="section-heading">
+              <h5>GitHub:</h5>
+              <%= link_to  "Edit", nil %>
+            </div>
+              <hr>
+            <p>  <%= @project.github %></p>
+          </div>
+          <div class="section-content">
+            <div class="section-heading">
+              <h5>Url:</h5>
+              <%= link_to  "Edit", nil %>
+            </div>
+              <hr>
+            <p>  <%= @project.url %></p>
+          </div>      
+        </div>
+      </div>
       
-      <% end %>
-      
-
-      <div>
-        <%= link_to "Edit this project", edit_portfolio_project_path(@project) %> |
-        <%= link_to "Back", portfolio_path(@portfolio) %>
-
-        <%= button_to "Destroy this project", [@portfolio, @project], method: :delete %>
-      </div>    
+      <div class="row justify-content-around">
+        
+        <hr>
+        
+        <div class="col-3 section-content">
+            <div class="section-heading">
+              <h5>Show Image:</h5>
+              <%= link_to  "Edit", nil %>
+            </div>
+          <hr>
+          
+          <% if @project.show_image.attached? %>
+              <%= image_tag @project.show_image, class: "project-show-photo" %>
+          <% end %>
+        </div>
+        <div class="col-8 section-content">
+            <div class="section-heading">
+              <h5>Images:</h5>
+              <%= link_to  "Edit", nil %>
+            </div>
+          <hr>
+          <div class="row row-cols-4">
+            
+            <% if @project.images.attached? %>
+              <% @project.images.each do |image|%>
+                <div class="col section-content">
+                  <%= image_tag image, class: "project-photos" %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <hr>
+        <div class="col section-heading">
+          <%= link_to "Back", portfolio_path(@portfolio) %>
+          <%= button_to "Delete", [@portfolio, @project], method: :delete, class: "btn btn-outline-danger" %>        
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,14 +1,17 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>New project</h1>
-
-        <%= render "form", project: @project %>
-
-      <br>
-
-      <div>
-        <%= link_to "Back", portfolio_path(@portfolio) %>
+  <div class="row mt-5">
+    <div class="col section">
+      <div class="row ">
+        <div class="col section-heading">
+          <h2>New Project</h2>
+          <%= link_to "Back", @portfolio %> 
+        </div>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col section">
+          <%= render "form", project: @project %>
+        </div>
       </div>
     </div>
   </div>

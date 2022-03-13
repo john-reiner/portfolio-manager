@@ -11,37 +11,47 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="row justify-content-around">
+    <div class="col-sm-4">
+      <div>
+        <%= form.label :show_image, style: "display: block" %>
+        <%= form.file_field :show_image %>
+      </div>
+
+      <div>
+        <%= form.label :images, style: "display: block" %>
+        <%= form.file_field :images, multiple: true %>
+      </div>    
+
+      <div>
+        <%= form.submit %>
+      </div>      
+    </div>
+
+    <div class="col-sm-4">
+
+      <div class="mb-3">
+        <%= form.label :name, class: "form-label" %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>        
+
+      <div class="mb-3">
+        <%= form.label :description, class: "form-label" %>
+        <%= form.text_area :description, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :github, class: "form-label"  %>
+        <%= form.text_field :github, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :url, class: "form-label" %>
+        <%= form.text_field :url, class: "form-control" %>
+      </div>
+
+    </div>
+
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :github, style: "display: block" %>
-    <%= form.text_field :github %>
-  </div>
-
-  <div>
-    <%= form.label :url, style: "display: block" %>
-    <%= form.text_field :url %>
-  </div>
-
-  <div>
-    <%= form.label :main_image_url, style: "display: block" %>
-    <%= form.text_area :main_image_url %>
-  </div>
-
-  <div>
-    <%= form.label :images, style: "display: block" %>
-    <%= form.file_field :images, multiple: true %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>

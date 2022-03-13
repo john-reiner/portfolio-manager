@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       resources :skills
     end
     resources :messages
+    member do
+      delete 'delete_image/:image_id', action: 'delete_image', as: 'delete_image'
+    end
   end
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
