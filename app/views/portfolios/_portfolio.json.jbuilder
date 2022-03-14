@@ -1,4 +1,4 @@
-json.extract! portfolio, :id, :email, :password_digest, :welcome_message, :about_me_text, :about_photo, :created_at, :updated_at
+json.extract! portfolio, :id, :email, :welcome_message, :about_me_text, :github, :linkedin, :created_at, :updated_at
 json.projects(portfolio.projects) do |project|
     json.id project.id
     json.name project.name
@@ -21,5 +21,6 @@ json.skills(portfolio.skill_categories) do |category|
     end
 end
 json.image_url url_for(portfolio.image)
+json.resume_url url_for(portfolio.resume)
 
 json.url portfolio_url(portfolio, format: :json)
