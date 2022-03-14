@@ -54,6 +54,18 @@
                     <%= form.text_area :about_me_text, class: "form-control" %>
                   <% end %>
                 </div>
+                <div class="mb-3">
+                  <%= form.label :github, class: "form-label"  %>
+                  <%= render "inline_fields", form: form, attribute: :github do %>
+                    <%= form.text_field :github, class: "form-control" %>
+                  <% end %>
+                </div>
+                <div class="mb-3">
+                  <%= form.label :linkedin, class: "form-label"  %>
+                  <%= render "inline_fields", form: form, attribute: :linkedin do %>
+                    <%= form.text_field :linkedin, class: "form-control" %>
+                  <% end %>
+                </div>
                 <div class="d-grid">
                   <%= form.submit class: "btn btn-outline-primary" %>
                 </div>

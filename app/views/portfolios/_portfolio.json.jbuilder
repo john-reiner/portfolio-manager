@@ -5,7 +5,7 @@ json.projects(portfolio.projects) do |project|
     json.description project.description
     json.github project.github
     json.url project.url
-    json.main_image_url project.main_image_url
+    json.main_image_url url_for(project.show_image)
     json.images(project.images) do |image|
         json.image_url url_for(image)
     end

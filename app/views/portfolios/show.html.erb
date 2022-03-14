@@ -32,33 +32,81 @@
               <hr>
             </div>
             <div class="row">
-              <div class="col section-content">
-                <h4>Main Photo:</h4>
-                  <%= form_with(model: @portfolio) do |form| %>
-                    <% if @portfolio.image.attached? %>
-                      <%= image_tag @portfolio.image, id: "main-photo" %>
-                    <% else %>
-                      <%= image_tag "https://via.placeholder.com/300", id: "main-photo" %>
-                    <% end %>
-                    <div class="mb-3">
-                      <%= form.label :image, class: "form-label" %>
-                      <%= form.file_field :image, class: "form-control" %>
-                      <%= form.submit class: "btn btn-outline-primary mt-3" %>
-                    </div>
-                  <% end %>
-                    
+              <div class="col">
+                <div class="row">
+                  <div class="col section-content">
+                    <h4>Main Photo:</h4>
+                      <%= form_with(model: @portfolio) do |form| %>
+                        <% if @portfolio.image.attached? %>
+                          <%= image_tag @portfolio.image, id: "main-photo" %>
+                        <% else %>
+                          <%= image_tag "https://via.placeholder.com/300", id: "main-photo" %>
+                        <% end %>
+                        <div class="mb-3">
+                          <%= form.label :image, class: "form-label" %>
+                          <%= form.file_field :image, class: "form-control" %>
+                          <%= form.submit class: "btn btn-outline-primary mt-3" %>
+                        </div>
+                      <% end %>
+                        
                   </div>
-
-
-              <div class="col section-content">
-                <div class="section-heading">
-                  <h4>Welcome Message:</h4>
                 </div>
-                <hr>
-                <%= render  "inline_edit", model: @portfolio, attribute: :welcome_message do %>
-                  <p><%= @portfolio.welcome_message %></p>
-                <% end %>
-              </div>              
+                <div class="row">
+                  <div class="col section-content">
+                    <%= form_with(model: @portfolio) do |form| %>
+                      
+                      <% if @portfolio.resume.attached? %>
+                        <iframe src="<%= rails_blob_path(@portfolio.resume, disposition: :inline) %>" height="200" width="300"></iframe>
+                      <% end %>
+                      
+                      <div class="mb-3">
+                        <%= form.label :resume, class: "form-label" %>
+                        <%= form.file_field :resume, class: "form-control" %>
+                        <%= form.submit class: "btn btn-outline-primary mt-3" %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              
+              </div>
+              <div class="col">
+                <div class="row">
+                  <div class="col section-content">
+                    <div class="section-heading">
+                      <h4>Welcome Message:</h4>
+                    </div>
+                    <hr>
+                    <%= render  "inline_edit", model: @portfolio, attribute: :welcome_message do %>
+                      <p><%= @portfolio.welcome_message %></p>
+                    <% end %>
+                  </div>                
+                </div>
+                <div class="row">
+                  <div class="col section-content">
+                    <div class="section-heading">
+                      <h4>GitHub:</h4>
+                    </div>
+                    <hr>
+                    <%= render  "inline_edit", model: @portfolio, attribute: :github do %>
+                      <p><%= @portfolio.github %></p>
+                    <% end %>
+                  </div>                    
+                </div>
+                <div class="row">
+                  <div class="col section-content">
+                    <div class="section-heading">
+                      <h4>LinkedIn:</h4>
+                    </div>
+                    <hr>
+                    <%= render  "inline_edit", model: @portfolio, attribute: :linkedin do %>
+                      <p><%= @portfolio.linkedin %></p>
+                    <% end %>
+                  </div>                    
+                </div>
+                
+              </div>
+
+
             </div>
             <div class="row">
               <div class="col section-content">

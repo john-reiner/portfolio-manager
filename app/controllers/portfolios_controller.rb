@@ -77,6 +77,6 @@ class PortfoliosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def portfolio_params
-      params.require(:portfolio).permit( :email, :password_digest, :welcome_message, :about_me_text, :image )
+      params.require(:portfolio).permit( :email, :password_digest, :welcome_message, :about_me_text, :image, :resume, :github, :linkedin )
     end
 end
