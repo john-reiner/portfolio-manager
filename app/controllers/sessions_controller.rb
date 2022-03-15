@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         redirect_to portfolio
     else
       flash[:message] = "Unable to verify email or password please try again."
-      redirect_to new_session_path
+
     end
   end
 
