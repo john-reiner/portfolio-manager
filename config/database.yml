@@ -17,9 +17,9 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
-  username: postgres
-  password: password
+  # host: db
+  # username: postgres
+  # password: password
   pool: 5
 
 development:
