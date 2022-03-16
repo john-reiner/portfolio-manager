@@ -38,9 +38,12 @@
             <div class="row">
               <div class="col">
                 <div class="row">
+                <%= form_with(model: @portfolio) do |form| %>
                   <div class="col section-content">
+                    <div class="section-heading">
                     <h4>Main Photo:</h4>
-                      <%= form_with(model: @portfolio) do |form| %>
+                    </div>
+                    <hr>
                         <% if @portfolio.image.attached? %>
                           <%= image_tag @portfolio.image, id: "main-photo" %>
                         <% else %>
@@ -56,9 +59,12 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col section-content">
-                    <%= form_with(model: @portfolio) do |form| %>
-                      
+                  <%= form_with(model: @portfolio) do |form| %>
+                    <div class="col section-content">
+                      <div class="section-heading">
+                        <h4>Resume</h4>
+                      </div>
+                      <hr>
                       <% if @portfolio.resume.attached? %>
                         <iframe src="<%= rails_blob_path(@portfolio.resume, disposition: :inline) %>" height="200" width="300"></iframe>
                       <% end %>
@@ -75,15 +81,9 @@
               </div>
               <div class="col">
                 <div class="row">
-                  <div class="col section-content">
-                    <div class="section-heading">
-                      <h4>Welcome Message:</h4>
-                    </div>
-                    <hr>
-                    <%= render  "layouts/shared/inline_edit", model: @portfolio, attribute: :welcome_message, title: "Fuckyou" do %>
-                      <p><%= @portfolio.welcome_message %></p>
-                    <% end %>
-                  </div>                
+                  <%= render  "layouts/shared/inline_edit", model: @portfolio, attribute: :welcome_message, title: "Welcome Message" do %>
+                    <p><%= @portfolio.welcome_message %></p>
+                  <% end %>        
                 </div>
                 <div class="row">
                   <%= render  "layouts/shared/inline_edit", model: @portfolio, attribute: :github, title: "GitHub" do %>
