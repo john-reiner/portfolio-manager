@@ -1,7 +1,0 @@
-<% frame_id = dom_id(model, "#{attribute}_turbo_frame") %>
-<%= form_with model: model, method: :put, data: {turbo_frame: frame_id} do %>
-    <%= turbo_frame_tag dom_id(model, "#{attribute}_turbo_frame") do %>
-        <%= yield %>
-        <%= link_to  "Edit",  edit_portfolio_path(model) %>
-    <% end %>
-<% end %>

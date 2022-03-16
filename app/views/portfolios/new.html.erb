@@ -1,9 +1,79 @@
-<h1>New portfolio</h1>
+<div class="container">
+  <div class="row form-container">
+    <div class="col section">
+      <div class="row ">
+        <div class="col section-heading">
+          <h2>Sign Up</h2>
+          <%= link_to "Sign In", root_path %> 
+        </div>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col section-content">
+          <%= form_with(model: @new_portfolio, id: "about-form") do |form| %>
+            <% if @new_portfolio.errors.any? %>
+              <div style="color: red">
+                <h2><%= pluralize(@new_portfolio.errors.count, "error") %> prohibited this portfolio from being created:</h2>
+                <ul>
+                  <% @new_portfolio.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="row justify-content-evenly">
+              <div class="col-sm-4 section-content">
+                <div class="mb-3 ">
+                  <%= form.label :email, class: "form-label" %>
+                  <%= form.text_field :email, class: "form-control" %>
+                </div>
+                <div class="mb-3 ">
+                  <%= form.label :password, class: "form-label" %>
+                  <%= form.password_field :password, class: "form-control" %>
+                </div>      
+                <div class="mb-3 ">
+                  <%= form.label :password_confirmation, class: "form-label"  %>
+                  <%= form.password_field :password_confirmation, class: "form-control" %>
+                </div>
+              </div>
 
-<%= render "form", portfolio: @portfolio %>
 
-<br>
 
-<div>
-  <%= link_to "Back to portfolios", portfolios_path %>
+              <div class="col-sm-4 section-content">
+                <div class="mb-3 ">
+                  <%= form.label :github, class: "form-label"  %>
+                  <%= form.text_field :github, class: "form-control" %>
+                </div>
+                <div class="mb-3">
+                  <%= form.label :linkedin, class: "form-label"  %>
+                  <%= form.text_field :linkedin, class: "form-control" %>
+                </div>
+                <div class="mb-3">
+                  <%= form.label :image, class: "form-label"  %>
+                  <%= form.file_field :image, class: "form-control" %>
+                </div>
+              </div>  
+            </div>
+
+              <div class="row">
+                <div class="col section-content">
+                  <div class="mb-3">
+                    <%= form.label :welcome_message, class: "form-label"  %>
+                    <%= form.text_field :welcome_message, class: "form-control" %>
+                  </div>
+                  <div class="mb-3">
+                    <%= form.label "About Me", class: "form-label"  %>
+                    <%= form.text_area :about_me_text, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+
+                <div class="d-grid">
+                  <%= form.submit class: "btn btn-outline-primary" %>
+                </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

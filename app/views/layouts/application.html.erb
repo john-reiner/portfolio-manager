@@ -16,7 +16,8 @@
   <header>
     <% if @portfolio %>
       <%= render  "layouts/navbars/signed_in" %>
-      
+    <% else %>
+      <%= render  "layouts/navbars/not_signed_in" %>
     <% end %>
       
   </header>

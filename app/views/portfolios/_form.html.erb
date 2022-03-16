@@ -15,33 +15,21 @@
 
       <div class="mb-3">
         <%= form.label :image, class: "form-label" %>
-        <%= turbo_frame_tag dom_id(@portfolio, "image_turbo_frame") do %>
           <%= form.file_field :image, class: "form-control" %>
           <%= form.button "Save" %>
           <%= link_to  "Cancel", @portfolio %>
-        <% end %>
         
       </div>
-
-      <% if @portfolio.image.attached? %>
-        <div class="mb-3">
-          <%= image_tag @portfolio.image, class: "img-thumbnail", id: "about-form-img" %>
-        </div>
-      <% end %>
 
     </div>
     <div class="col-sm-4">
         <div class="mb-3">
           <%= form.label :welcome_message, class: "form-label" %>
-          <%= render "inline_fields", form: form, attribute: :welcome_message do %>
             <%= form.text_field :welcome_message, class: "form-control" %>
-          <% end %>
         </div>      
       <div class="mb-3">
         <%= form.label :about_me_text, class: "form-label"  %>
-        <%= render "inline_fields", form: form, attribute: :about_me_text do %>
           <%= form.text_area :about_me_text, class: "form-control" %>
-        <% end %>
       </div>
       <div class="d-grid">
         <%= form.submit class: "btn btn-outline-primary" %>

@@ -13,7 +13,7 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios/new
   def new
-    @portfolio = Portfolio.new
+    @new_portfolio = Portfolio.new
   end
 
   # GET /portfolios/1/edit
@@ -22,15 +22,23 @@ class PortfoliosController < ApplicationController
 
   # POST /portfolios or /portfolios.json
   def create
-    @portfolio = Portfolio.new(portfolio_params)
+
+    @new_portfolio = Portfolio.new(portfolio_params)
 
     respond_to do |format|
-      if @portfolio.save
-        format.html { redirect_to portfolio_url(@portfolio), notice: "Portfolio was successfully created." }
-        format.json { render :show, status: :created, location: @portfolio }
+      if @new_portfolio.save
+
+        secret_key = Rails.application.secret_key_base
+        token = JWT.encode({
+          portfolio_id: @new_portfolio.id,
+          }, secret_key)
+          session[:token] = token
+
+        format.html { redirect_to portfolio_url(@new_portfolio), notice: "Portfolio was successfully created." }
+        format.json { render :show, status: :created, location: @new_portfolio }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @portfolio.errors, status: :unprocessable_entity }
+        format.json { render json: @new_portfolio.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -77,6 +85,6 @@ class PortfoliosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def portfolio_params
-      params.require(:portfolio).permit( :email, :password_digest, :welcome_message, :about_me_text, :image, :resume, :github, :linkedin )
+      params.require(:portfolio).permit( :email, :password, :password_confirmation, :welcome_message, :about_me_text, :image, :resume, :github, :linkedin )
     end
 end

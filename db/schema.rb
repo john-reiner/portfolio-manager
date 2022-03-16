@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_14_130627) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_16_200709) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,9 +70,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_14_130627) do
     t.text "description"
     t.string "github"
     t.string "url"
-    t.text "main_image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "github_readme_url"
+    t.boolean "show_readme"
     t.index ["portfolio_id"], name: "index_projects_on_portfolio_id"
   end
 

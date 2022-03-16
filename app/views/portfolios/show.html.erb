@@ -14,8 +14,12 @@
           </div>
           <div class="row">
             <div class="col section-content">
-              <p><%= @portfolio.messages.last.name %>:</p>
-              <p><%= @portfolio.messages.last.message %></p>                
+              <% if @portfolio.messages.count > 0 %>
+                <p><%= @portfolio.messages.last.name %>:</p>
+                <p><%= @portfolio.messages.last.message %></p>                
+              <% else %>
+                <p>No Messages</p>
+              <% end %>
             </div>
           </div>
         </div>
@@ -76,46 +80,30 @@
                       <h4>Welcome Message:</h4>
                     </div>
                     <hr>
-                    <%= render  "inline_edit", model: @portfolio, attribute: :welcome_message do %>
+                    <%= render  "layouts/shared/inline_edit", model: @portfolio, attribute: :welcome_message, title: "Fuckyou" do %>
                       <p><%= @portfolio.welcome_message %></p>
                     <% end %>
                   </div>                
                 </div>
                 <div class="row">
-                  <div class="col section-content">
-                    <div class="section-heading">
-                      <h4>GitHub:</h4>
-                    </div>
-                    <hr>
-                    <%= render  "inline_edit", model: @portfolio, attribute: :github do %>
-                      <p><%= @portfolio.github %></p>
-                    <% end %>
-                  </div>                    
+                  <%= render  "layouts/shared/inline_edit", model: @portfolio, attribute: :github, title: "GitHub" do %>
+                    <p><%= @portfolio.github %></p>
+                  <% end %>
                 </div>
                 <div class="row">
-                  <div class="col section-content">
-                    <div class="section-heading">
-                      <h4>LinkedIn:</h4>
-                    </div>
-                    <hr>
-                    <%= render  "inline_edit", model: @portfolio, attribute: :linkedin do %>
-                      <p><%= @portfolio.linkedin %></p>
-                    <% end %>
-                  </div>                    
+                <%= render  "layouts/shared/inline_edit", model: @portfolio, attribute: :linkedin, title: "LinkedIn" do %>
+                  <p><%= @portfolio.linkedin %></p>
+                <% end %>
                 </div>
-                
               </div>
-
-
             </div>
             <div class="row">
-              <div class="col section-content">
-                <h4>About Me:</h4>
-                <%= render  "inline_edit", model: @portfolio, attribute: :about_me_text do %>
-                  <p><%= @portfolio.about_me_text %></p>
-                <% end %>
+
+              <%= render  "layouts/shared/inline_edit", model: @portfolio, attribute: :about_me_text, title: "About Me" do %>
+                <p><%= @portfolio.about_me_text %></p>
+              <% end %>
                 
-              </div>
+
             </div>
           </div>
         </div>

@@ -10,14 +10,25 @@
       </div>
       <div class="row">
         <div class="col">
-          <div class="section-content">
-            <div class="section-heading">
-              <h5>Description:</h5>
-              <%= link_to  "Edit", nil %>
+
+
+
+
+          <%= render  "layouts/shared/inline_edit", model:[@portfolio, @project], attribute: :description do %>
+            <div class="section-content">
+              <div class="section-heading">
+                <h5>Description:</h5>
+                <%= link_to  "Edit", nil %>
+              </div>
+              <hr>
+              <p><%= @project.description %></p>        
             </div>
-            <hr>
-            <p><%= @project.description %></p>        
-          </div>
+          <% end %>
+
+
+
+
+
         </div>
         <div class="col">
           <div class="section-content">
@@ -27,6 +38,22 @@
             </div>
               <hr>
             <p>  <%= @project.github %></p>
+          </div>
+          <div class="section-content">
+            <div class="section-heading">
+              <h5>GitHub README url:</h5>
+              <%= link_to  "Edit", nil %>
+            </div>
+              <hr>
+            <p>  <%= @project.github_readme_url %></p>
+          </div>
+          <div class="section-content">
+            <div class="section-heading">
+              <h5>Show GitHub Readme?</h5>
+              <%= link_to  "Edit", nil %>
+            </div>
+              <hr>
+            <p><%= @project.show_readme %></p>
           </div>
           <div class="section-content">
             <div class="section-heading">

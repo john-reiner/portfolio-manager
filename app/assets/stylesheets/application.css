@@ -17,6 +17,20 @@ p {
     width: fit-content;
     margin: none;
 }
+
+.form-container {
+    /* border:  red solid; */
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .section {
     background-color: #333;
     color: whitesmoke;
@@ -28,7 +42,15 @@ p {
 
 .section-heading {
     display: flex;
+    
     justify-content: space-between;
+    align-items: center;
+}
+
+.section-heading-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 

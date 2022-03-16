@@ -19,7 +19,8 @@ Project.create!(
     description: "My portfolio which you are currently vieing! This was built on a React front end client connecting to my Portfolio Manager which send the JSON information. Please see my other project 'Portfolio Manger' for more information.",
     github: "https://github.com/john-reiner/portfolio-react",
     url: '/',
-    main_image_url: "./assets/images/portfolio-main.png"
+    github_readme_url: "https://raw.githubusercontent.com/john-reiner/portfolio-react/main/README.md",
+    show_readme: true
 )
 
 SkillCategory.create!(
