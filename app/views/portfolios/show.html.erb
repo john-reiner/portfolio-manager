@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row justify-content-around">
 
     <div class="col-sm-4 ">
@@ -81,17 +81,17 @@
               </div>
               <div class="col">
                 <div class="row">
-                  <%= render  "layouts/shared/inline_edit", model: @portfolio, attribute: :welcome_message, title: "Welcome Message" do %>
+                  <%= render  "inline_edit", model: @portfolio, attribute: :welcome_message, title: "Welcome Message" do %>
                     <p><%= @portfolio.welcome_message %></p>
                   <% end %>        
                 </div>
                 <div class="row">
-                  <%= render  "layouts/shared/inline_edit", model: @portfolio, attribute: :github, title: "GitHub" do %>
+                  <%= render  "inline_edit", model: @portfolio, attribute: :github, title: "GitHub" do %>
                     <p><%= @portfolio.github %></p>
                   <% end %>
                 </div>
                 <div class="row">
-                <%= render  "layouts/shared/inline_edit", model: @portfolio, attribute: :linkedin, title: "LinkedIn" do %>
+                <%= render  "inline_edit", model: @portfolio, attribute: :linkedin, title: "LinkedIn" do %>
                   <p><%= @portfolio.linkedin %></p>
                 <% end %>
                 </div>
@@ -99,7 +99,7 @@
             </div>
             <div class="row">
 
-              <%= render  "layouts/shared/inline_edit", model: @portfolio, attribute: :about_me_text, title: "About Me" do %>
+              <%= render  "inline_edit", model: @portfolio, attribute: :about_me_text, title: "About Me" do %>
                 <p><%= @portfolio.about_me_text %></p>
               <% end %>
                 
@@ -120,10 +120,12 @@
           <div class="row row-cols-4">
             <% @portfolio.projects.each do |project| %>
               <div class="col section-content project">
-                <p><%= link_to project.name , portfolio_project_path(@portfolio, project) %></p>
+                <p class="text-center" ><%= link_to project.name , portfolio_project_path(@portfolio, project) %></p>
                 
                 <% if project.show_image.attached? %>
                   <%= image_tag project.show_image, class: "project-show-photo" %>
+                <% else %>
+                  <%= image_tag "https://via.placeholder.com/300", id: "main-photo" %>
                 <% end %>
                 
               </div>

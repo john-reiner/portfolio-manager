@@ -1,0 +1,14 @@
+<% frame_id = dom_id(form.object, "#{attribute}_turbo_frame") %>
+<%= turbo_frame_tag frame_id do %>
+    <div class="col section-content">
+        <div class="section-heading">
+        <h4><%= title %></h4>
+        <%= link_to  "Cancel", portfolio_project_path(form.object) %>
+        </div>
+        <hr>
+        <%= yield %>
+        <div class="d-grid gap-2">
+            <%= form.submit "Save", class: "d-grid btn btn-outline-primary mt-3" %>
+        </div>
+    </div>
+<% end %>

@@ -9,7 +9,7 @@ json.projects(portfolio.projects) do |project|
     json.main_image_url project.show_image.url   
 
     json.images(project.images) do |image|
-        json.image_url url_for(image)
+        json.image_url image.url
     end
 
 end

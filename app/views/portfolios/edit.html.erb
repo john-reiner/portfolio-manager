@@ -33,7 +33,7 @@
 
                 <div class="mb-3">
                   <%= form.label :image, class: "form-label" %>
-                  <%= render "layouts/shared/inline_fields", form: form, attribute: :image, title: "About Me" do %>
+                  <%= render "inline_fields", form: form, attribute: :image, title: "About Me" do %>
                     <%= form.file_field :image, class: "form-control" %>
                     
                   <% end %>
@@ -44,25 +44,25 @@
               <div class="col-sm-4">
                   <div class="mb-3">
                     <%= form.label :welcome_message, class: "form-label" %>
-                    <%= render "layouts/shared/inline_fields", form: form, attribute: :welcome_message, title: "Welcome Message" do %>
+                    <%= render "inline_fields", form: form, attribute: :welcome_message, title: "Welcome Message" do %>
                       <%= form.text_field :welcome_message, class: "form-control" %>
                     <% end %>
                   </div>      
                 <div class="mb-3">
                   <%= form.label :about_me_text, class: "form-label"  %>
-                  <%= render "layouts/shared/inline_fields", form: form, attribute: :about_me_text, title: "About Me" do %>
+                  <%= render "inline_fields", form: form, attribute: :about_me_text, title: "About Me" do %>
                     <%= form.text_area :about_me_text, class: "form-control" %>
                   <% end %>
                 </div>
                 <div class="mb-3">
                   <%= form.label :github, class: "form-label"  %>
-                  <%= render "layouts/shared/inline_fields", form: form, attribute: :github, title: "GitHub" do %>
+                  <%= render "inline_fields", form: form, attribute: :github, title: "GitHub" do %>
                     <%= form.text_field :github, class: "form-control" %>
                   <% end %>
                 </div>
                 <div class="mb-3">
                   <%= form.label :linkedin, class: "form-label"  %>
-                  <%= render "layouts/shared/inline_fields", form: form, attribute: :linkedin, title: "LinkedIn" do %>
+                  <%= render "inline_fields", form: form, attribute: :linkedin, title: "LinkedIn" do %>
                     <%= form.text_field :linkedin, class: "form-control" %>
                   <% end %>
                 </div>

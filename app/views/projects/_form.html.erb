@@ -19,31 +19,31 @@
         <hr>
         <%= form.text_field :name, class: "form-control" %>
       </div>
-      <div class="section-content">
-        <div class="section-heading">
-          <%= form.label :description, class: "form-label" %>
-        </div>
-        <hr>
+
+      <%= render "inline_fields", form: form, attribute: :description, title: "Description" do %>
         <%= form.text_area :description, class: "form-control" %>
-      </div>
+      <% end %>
+      
     </div>
 
 
     <div class="col">
-      <div class="section-content">
-        <div class="section-heading">
-          <%= form.label :github, class: "form-label"  %>
+      <%= render "inline_fields", form: form, attribute: :github, title: "GitHub" do %>
+        <%= form.text_area :github, class: "form-control" %>
+      <% end %>
+      <%= render "inline_fields", form: form, attribute: :url, title: "Deployed URL" do %>
+        <%= form.text_area :url, class: "form-control" %>
+      <% end %>
+      <%= render "inline_fields", form: form, attribute: :github_readme_url, title: "GitHub README URL" do %>
+        <%= form.text_area :github_readme_url, class: "form-control" %>
+      <% end %>
+      <%= render "inline_fields", form: form, attribute: :show_readme, title: "Show README?" do %>
+        <div class="form-check">
+          <%= form.check_box :show_readme, class: "form-check-input"  %>
+          <%= form.label :show_readme, class: "form-check-label"  %>
         </div>
-        <hr>
-          <%= form.text_field :github, class: "form-control" %>
-      </div>
-      <div class="section-content">
-        <div class="section-heading">
-          <%= form.label :url, class: "form-label"  %>
-        </div>
-        <hr>
-          <%= form.text_field :url, class: "form-control" %>
-      </div>
+
+      <% end %>
     </div>
   </div>
   
