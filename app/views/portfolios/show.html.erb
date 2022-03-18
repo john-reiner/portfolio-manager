@@ -135,36 +135,34 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col section mt-3 mb-5">
-          <div class="row">
-            <div class="col section-heading">
-              <h2>Skill Categories</h2>
-              <%= link_to  "Add", new_portfolio_skill_category_path(@portfolio) %>            
+        <div class="row">
+            <div class="col section mt-3 mb-5">
+              <div class="row">
+                <div class="col section-heading">
+                  <h2>Skill Categories</h2>
+                  <%= link_to  "Add", new_portfolio_skill_category_path(@portfolio) %>            
+                </div>
+              </div>
+              <div class="row">
+                <div class="col section-content">
+                  <table>
+                    <tr>
+                      <th>Name</th>
+                      <th class="text-center">Skills</th>
+                    </tr>
+                    <% @portfolio.skill_categories.each do |skill_category| %>
+                      <% if skill_category.name %>
+                        <tr class= "section-content">
+                          <td><%= link_to  skill_category.name, portfolio_skill_category_path(@portfolio, skill_category) %></td>
+                          <td class="text-center"><%= skill_category.skills.count %></td>
+                        </tr>
+                      <% end %>
+                    <% end %>
+                  </table>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col section-content">
-              <table>
-                <tr>
-                  <th>Name</th>
-                  <th class="text-center">Skills</th>
-                  <th>Edit</th>
-                </tr>
-                <% @portfolio.skill_categories.each do |skill_category| %>
-                  <tr>
-                    <td><%= link_to  skill_category.name, portfolio_skill_category_path(@portfolio, skill_category) %></td>
-                    <td class="text-center"><%= skill_category.skills.count %></td>
-                    <td><%= link_to  "Edit", edit_portfolio_skill_category_path(skill_category) %></td>
-                  </tr>
-                  
-                <% end %>              
-              </table>
-            </div>
-          </div>
-
         </div>
-      </div>
     </div>
   </div>
 </div>

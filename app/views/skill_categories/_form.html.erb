@@ -1,4 +1,4 @@
-<%= form_with(model: skill_category) do |form| %>
+<%= form_with(model: [@portfolio, @skill_category]) do |form| %>
   <% if skill_category.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(skill_category.errors.count, "error") %> prohibited this skill_category from being saved:</h2>
@@ -16,11 +16,48 @@
     <%= form.text_field :portfolio_id %>
   </div>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+  <% frame_id = dom_id(@portfolio, "skill_category_turbo_frame") %>
+  <%= turbo_frame_tag frame_id do %>
+    <div class="col section mt-3 mb-5">
+      <div class="row">
+        <div class="col section-heading">
+          <h2>Skill Categories</h2>
+          <%= link_to  "cancel", @portfolio %>            
+        </div>
+      </div>
+      <div class="row">
+        <div class="col section-content">
+          <table>
+            <tr>
+              <th>Name</th>
+              <th class="text-center">Skills</th>
+            </tr>
+            <% @portfolio.skill_categories.each do |skill_category| %>
+              
+              <% if skill_category.name %>
+                <tr class= "section-content">
+                  <td><%= skill_category.name %></td>
+                  <td class="text-center"><%= skill_category.skills.count %></td>
+                </tr>
+              <% end %>
+              
+            <% end %>
+            <tr class= "section-content">
+              <td><%= form.text_field :name, class: "form-control" %></td>
+              <td class="text-center"><%= form.submit "Save", class: "btn btn-outline-primary"%></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  
 
+    
+    <div>
+      <%= form.label :name, style: "display: block" %>
+      
+    </div>
   <div>
     <%= form.submit %>
   </div>

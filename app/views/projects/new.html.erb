@@ -1,14 +1,107 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col section">
-      <div class="row ">
+      <div class="row">
         <div class="col section-heading">
           <h2>New Project</h2>
           <%= link_to "Back", @portfolio %> 
         </div>
         <hr>
       </div>
-      <%= render "form", project: @project %>
+
+
+
+        <%= form_with(model: [@portfolio, @project]) do |form| %>
+          <% if @project.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(@project.errors.count, "error") %> prohibited this @project from being saved:</h2>
+              <ul>
+                <% @project.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="row">
+            <div class="col">
+              <div class="section-content">
+                <div class="section-heading">
+                  <h4><%= form.label :name, class: "form-label" %></h4>
+                </div>
+                <hr>
+                <%= form.text_field :name, class: "form-control" %>
+              </div>
+
+              <div class="section-content">
+                <div class="section-heading">
+                  <h4><%= form.label :description, class: "form-label" %></h4>
+                </div>
+                <hr>
+                <%= form.text_area :description, class: "form-control" %>
+              </div>
+              
+            </div>
+
+
+            <div class="col">
+              <div class="section-content">
+                <div class="section-heading">
+                  <h4><%= form.label :github, class: "form-label" %></h4>
+                </div>
+                <hr>
+                <%= form.text_field :github, class: "form-control" %>
+              </div>
+              <div class="section-content">
+                <div class="section-heading">
+                  <h4><%= form.label :github_readme_url, class: "form-label" %></h4>
+                </div>
+                <hr>
+                <%= form.text_field :github_readme_url, class: "form-control" %>
+                <div class="form-check mt-3">
+                  <%= form.check_box :show_readme, class: "form-check-input"  %>
+                  <%= form.label :show_readme, class: "form-check-label"  %>
+                </div>
+              </div>
+              <div class="section-content">
+                <div class="section-heading">
+                  <h4><%= form.label :url, class: "form-label" %></h4>
+                </div>
+                <hr>
+                <%= form.text_field :url, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+          
+          <div class="row justify-content-around">
+
+            <div class="col-3 section-content">
+              <div class="section-heading">
+                <%= form.label :show_image, style: "display: block" %>
+              </div>
+              <hr>
+              <%= form.file_field :show_image %>
+            </div>
+            <div class="col-8 section-content">
+              <div class="section-heading">
+                <%= form.label :images, style: "display: block" %>
+              </div>
+              <hr>
+              <%= form.file_field :images, multiple: true %>
+            </div>
+          </div>
+          <div class="row mt-4">
+          <hr>
+          <div class="col d-grid">
+            <%= form.submit class: "btn btn-outline-primary" %>
+          </div>
+
+
+
+        <% end %>
+
+
     </div>
   </div>
 </div>

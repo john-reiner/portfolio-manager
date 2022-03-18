@@ -2,10 +2,16 @@
   <div class="row mt-5">
     <div class="col section">
       <div class="row ">
-        <div class="col section-heading">
-            <h2><%= @project.name %></h2>
-            <%= link_to "Back", portfolio_path(@portfolio) %>
-        </div>
+          <% frame_id = dom_id(@project, "name_turbo_frame") %>
+          <%= form_with model: [@portfolio, @project], method: :put, data: {turbo_frame: frame_id} do %>
+            <%= turbo_frame_tag dom_id(@project, "name_turbo_frame") do %>
+            <div class="col section-heading">
+              <h2><%= @project.name %></h2>
+              <%= link_to "Edit", edit_portfolio_project_path([@portfolio, @project]) %>
+            </div>
+            <% end %>
+          <% end %>
+              
         <hr>
       </div>
       <div class="row">
@@ -14,9 +20,9 @@
 
 
 
-          <%= render  "inline_edit", portfolio: @portfolio, project: @project, attribute: :description, title: "Description" do %>
-            <p><%= @project.description %></p>        
-          <% end %>
+      <%= render  "inline_edit", portfolio: @portfolio, project: @project, attribute: :description, title: "Description" do %>
+        <p><%= @project.description %></p>        
+      <% end %>
 
 
 
@@ -29,9 +35,7 @@
           <% end %>
           <%= render  "inline_edit", portfolio: @portfolio, project: @project, attribute: :github_readme_url, title: "GitHub README URL" do %>
             <p><%= @project.github_readme_url %></p>        
-          <% end %>
-          <%= render  "inline_edit", portfolio: @portfolio, project: @project, attribute: :show_readme, title: "Show README?" do %>
-            <p><%= @project.show_readme %></p>        
+            <p>Show Readme: <b><%= @project.show_readme %></b></p>        
           <% end %>
           <%= render  "inline_edit", portfolio: @portfolio, project: @project, attribute: :url, title: "Deployed URL" do %>
             <p><%= @project.url %></p>        
@@ -96,7 +100,8 @@
       <div class="row mt-4">
         <hr>
         <div class="col section-heading">
-          <%= button_to "Delete", [@portfolio, @project], method: :delete, class: "btn btn-outline-danger" %>        
+          <%= link_to  "Back", @portfolio %>
+          <%= button_to "Delete", [@portfolio, @project], method: :delete, class: "btn btn-outline-danger" %> 
         </div>
       </div>
     </div>

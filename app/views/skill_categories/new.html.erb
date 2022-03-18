@@ -1,15 +1,59 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>New skill category</h1>
-
-      <%= render "form", skill_category: @skill_category %>
-
-      <br>
-
-      <div>
-        <%= link_to "Back", portfolio_path(@portfolio) %>
+  <div class="row mt-5">
+    <div class="col section">
+      <div class="row">
+        <div class="col section-heading">
+          <h1>New Skill Category</h1>
+          <%= link_to "Back", portfolio_path(@portfolio) %>
+        </div>
+        <hr>
       </div>
+        <%= form_with(model: [@portfolio, @skill_category]) do |form| %>
+          <% if @skill_category.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(@skill_category.errors.count, "error") %> prohibited this Skill Category from being saved:</h2>
+              <ul>
+                <% @skill_category.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+            <div class="row">
+              <div class="col">
+                <div class="section-content">
+                  <div class="section-heading">
+                    <h4><%= form.label :name, class: "form-label" %></h4>
+                  </div>
+                  <hr>
+                  <%= form.text_field :name, class: "form-control" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <div class="section-content">
+                  <div class="section-heading">
+                    <h4>Add Skills</h4>
+                    
+                  </div>
+                  <hr>
+                  <%= form.fields_for :skills do |s| %>
+                    <%= form.label :name, class: "form-label" %>
+                    <%= form.text_field :name, class: "form-control" %>
+                  <% end %>
+                  
+                </div>
+              </div>
+            </div>
+            
+                <hr>
+          <div>
+            <%= form.submit %>
+          </div>
+
+        <% end %>
     </div>
   </div>
 </div>

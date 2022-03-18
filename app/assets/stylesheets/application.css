@@ -75,20 +75,25 @@ p {
 
 table {
     font-family: arial, sans-serif;
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
     width: 100%;
 }
 
 td, th {
 
 text-align: left;
-padding: 8px;
+padding: .5em;
+}
+
+tr {
+    margin-bottom: 1em;
 }
 
 
-tr:nth-child(even) {
+
+/* tr:nth-child(even) {
 background-color: #555;
-}
+} */
 
 .message-container {
     

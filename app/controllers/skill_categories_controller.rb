@@ -10,10 +10,10 @@ class SkillCategoriesController < ApplicationController
   # GET /skill_categories/1 or /skill_categories/1.json
   def show
   end
-
   # GET /skill_categories/new
   def new
-    @skill_category = SkillCategory.new
+    @skill_category = @portfolio.skill_categories.build
+    @skill_category.skills.build
   end
 
   # GET /skill_categories/1/edit
@@ -22,11 +22,12 @@ class SkillCategoriesController < ApplicationController
 
   # POST /skill_categories or /skill_categories.json
   def create
-    @skill_category = SkillCategory.new(skill_category_params)
-
+    # byebug
+    @skill_category = @portfolio.skill_categories.build(skill_category_params)
+    # byebug
     respond_to do |format|
       if @skill_category.save
-        format.html { redirect_to skill_category_url(@skill_category), notice: "Skill category was successfully created." }
+        format.html { redirect_to @portfolio, notice: "Skill category was successfully created." }
         format.json { render :show, status: :created, location: @skill_category }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -66,6 +67,6 @@ class SkillCategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def skill_category_params
-      params.require(:skill_category).permit(:portfolio_id, :name)
+      params.require(:skill_category).permit(:portfolio_id, :name, skills: [:name])
     end
 end

@@ -4,7 +4,7 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios/1 or /portfolios/1.json
   def show
-
+    @skill_category = @portfolio.skill_categories.build
   end
 
   def public

@@ -12,12 +12,22 @@
   <% end %>
   <div class="row">
     <div class="col">
+      <% frame_id = dom_id(@portfolio, "name_turbo_frame") %>
+      <%= turbo_frame_tag frame_id do %>
+          <div class="section-heading">
+            <%= form.text_field :name, class: "form-control" %>
+            <%= link_to  "Cancel", portfolio_project_path(@project) %>
+          </div>
+          <div class="d-grid mb-3">
+            <%= form.submit "Save", class: "d-grid btn btn-outline-primary mt-3" %>
+          </div>
+      <% end %>
+      
       <div class="section-content">
         <div class="section-heading">
           <%= form.label :name, class: "form-label" %>
         </div>
         <hr>
-        <%= form.text_field :name, class: "form-control" %>
       </div>
 
       <%= render "inline_fields", form: form, attribute: :description, title: "Description" do %>
@@ -36,12 +46,12 @@
       <% end %>
       <%= render "inline_fields", form: form, attribute: :github_readme_url, title: "GitHub README URL" do %>
         <%= form.text_area :github_readme_url, class: "form-control" %>
-      <% end %>
-      <%= render "inline_fields", form: form, attribute: :show_readme, title: "Show README?" do %>
-        <div class="form-check">
+        <div class="form-check mt-3">
           <%= form.check_box :show_readme, class: "form-check-input"  %>
           <%= form.label :show_readme, class: "form-check-label"  %>
         </div>
+      <% end %>
+      <%= render "inline_fields", form: form, attribute: :show_readme, title: "Show README?" do %>
 
       <% end %>
     </div>
