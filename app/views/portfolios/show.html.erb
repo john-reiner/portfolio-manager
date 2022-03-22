@@ -156,20 +156,14 @@
               </div>
               <div class="row">
                 <div class="col section-content">
-                  <table>
-                    <tr>
-                      <th>Name</th>
-                      <th class="text-center">Skills</th>
-                    </tr>
-                    <% @portfolio.skill_categories.each do |skill_category| %>
-                      <% if skill_category.name %>
-                        <tr class= "section-content">
-                          <td><%= link_to  skill_category.name, portfolio_skill_category_path(@portfolio, skill_category) %></td>
-                          <td class="text-center"><%= skill_category.skills.count %></td>
-                        </tr>
-                      <% end %>
-                    <% end %>
-                  </table>
+                  <div class="row">
+                    <div class="col-10">Name</div>
+                    <div class="col-2">Skill Count</div>
+                  </div>
+                  <hr>
+                  <div id="skill-categories">
+                    <%= render  @skill_categories %>
+                  </div>
                 </div>
               </div>
             </div>

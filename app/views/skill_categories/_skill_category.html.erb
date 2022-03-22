@@ -1,12 +1,4 @@
-<div id="<%= dom_id skill_category %>">
-  <p>
-    <strong>Portfolio:</strong>
-    <%= skill_category.portfolio_id %>
-  </p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= skill_category.name %>
-  </p>
-
+<div class="row" id="<%= dom_id skill_category %>">
+  <div class="col-10"><%= link_to  skill_category.name, portfolio_skill_category_path(@portfolio, skill_category) %></div>
+  <div class="col-2 text-center"><%= skill_category.skills.count %></div>
 </div>
