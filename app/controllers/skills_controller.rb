@@ -1,41 +1,39 @@
 class SkillsController < ApplicationController
   before_action :set_skill, only: %i[ show edit update destroy ]
-  before_action :set_skill_category, only: %i[ index new create update]
+  before_action :set_skill_category, only: %i[ index edit new create update]
   before_action :authenticate_access
 
   # GET /skills or /skills.json
   def index
     @skills = @skill_category.skills
   end
-
+  
   # GET /skills/1 or /skills/1.json
   def show
   end
-
+  
   # GET /skills/new
   def new
-    # byebug
     @skill = @skill_category.skills.build
-
   end
   
   # GET /skills/1/edit
   def edit
-
+    
   end
-  
+
   # POST /skills or /skills.json
   def create
 
     @skill = @skill_category.skills.build(skill_params)
-    
+
     respond_to do |format|
       if @skill.save
+        format.turbo_stream
         format.html { redirect_to @portfolio, notice: "Skill was successfully created." }
-        format.json { render :show, status: :created, location: @skill }
       else
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("#{helpers.dom_id(@skill)}_form", partial: "form", locals: { portfolio: @portfolio, skill_category: @skill_category, skill: @skill })}
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @skill.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,11 +42,11 @@ class SkillsController < ApplicationController
   def update
     respond_to do |format|
       if @skill.update(skill_params)
-        format.html { redirect_to skill_categories_path(@skill_category), notice: "Skill was successfully updated." }
-        format.json { render :show, status: :ok, location: @skill }
+        format.turbo_stream
+        format.html { redirect_to portfolio_skill_category_path(@portfolio, @skill_category), notice: "Skill was successfully updated." }
       else
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("#{helpers.dom_id(@skill)}_form", partial: "form", locals: { portfolio: @portfolio, skill_category: @skill_category, skill: @skill })}
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @skill.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,6 +56,7 @@ class SkillsController < ApplicationController
     @skill.destroy
 
     respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove("#{helpers.dom_id(@skill)}_item")}
       format.html { redirect_to skills_url, notice: "Skill was successfully destroyed." }
       format.json { head :no_content }
     end
@@ -67,7 +66,6 @@ class SkillsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def set_skill_category
-
       @skill_category = SkillCategory.find(params[:skill_category_id])
     end
 

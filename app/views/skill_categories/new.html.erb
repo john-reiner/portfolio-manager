@@ -40,15 +40,15 @@
                   </div>
                   <hr>
                   <%= form.fields_for :skills do |s| %>
-                    <%= form.label :name, class: "form-label" %>
-                    <%= form.text_field :name, class: "form-control" %>
+                    <%= s.label :name, class: "form-label" %>
+                    <%= s.text_field :name, class: "form-control" %>
                   <% end %>
                   
                 </div>
               </div>
             </div>
             
-                <hr>
+            <hr>
           <div>
             <%= form.submit %>
           </div>

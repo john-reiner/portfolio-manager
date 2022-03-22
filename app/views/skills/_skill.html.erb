@@ -1,17 +1,7 @@
-<div id="<%= dom_id skill %>">
-  <p>
-    <strong>Skill category:</strong>
-    <%= skill.skill_category_id %>
-  </p>
+<li id="<%= "#{dom_id(skill)}_item" %>">
 
-  <p>
-    <strong>Name:</strong>
-    <%= skill.name %>
-  </p>
-
-  <p>
-    <strong>Icon:</strong>
-    <%= skill.icon %>
-  </p>
-
-</div>
+  <%= turbo_frame_tag dom_id(skill) do %>
+    <%= link_to skill.name, edit_portfolio_skill_category_skill_path(portfolio, skill_category, skill) %>
+    <%= button_to "X", portfolio_skill_category_skill_path(portfolio, skill_category, skill), method: :delete %>
+  <% end %>
+</li>

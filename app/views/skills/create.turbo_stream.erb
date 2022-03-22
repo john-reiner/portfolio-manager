@@ -1,0 +1,7 @@
+<%= turbo_stream.prepend "skills" do %>
+    <%= render  "skill", skill: @new_skill %>
+<% end %>
+
+<%= turbo_stream.replace "#{dom_id(Skill.new)}_form" do %>
+    <%= render  "form", portfolio: @portfolio, skill_category:@skill_category, skill: Skill.new %>
+<% end %>

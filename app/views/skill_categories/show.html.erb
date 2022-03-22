@@ -2,17 +2,13 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <p style="color: green"><%= notice %></p>
 
-      <%= render @skill_category %>
-      <%= link_to  "Add Skill", new_portfolio_skill_category_skill_path(@portfolio, @skill_category, @skill) %>
-      <div>
-        <%= link_to "Edit this skill category", edit_portfolio_skill_category_path(@portfolio, @skill_category) %> |
-        <%= link_to "Back", portfolio_path(@portfolio) %>
+      <%= render  "skills/form", portfolio: @portfolio, skill_category: @skill_category, skill: Skill.new %>
 
-        <%= button_to "Destroy this skill category", portfolio_skill_category_path(@portfolio, @skill_category), method: :delete %>
-      </div>
-    
+      <ul id="skills">
+        
+        <%= render  @skills, portfolio: @portfolio, skill_category: @skill_category %>
+      </ul>
     </div>
   </div>
 </div>
