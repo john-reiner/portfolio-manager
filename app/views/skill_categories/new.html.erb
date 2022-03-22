@@ -19,34 +19,21 @@
               </ul>
             </div>
           <% end %>
-            <div class="row">
-              <div class="col">
-                <div class="section-content">
-                  <div class="section-heading">
-                    <h4><%= form.label :name, class: "form-label" %></h4>
-                  </div>
-                  <hr>
-                  <%= form.text_field :name, class: "form-control" %>
-                </div>
-              </div>
-            </div>
 
-            <div class="row">
-              <div class="col">
-                <div class="section-content">
-                  <div class="section-heading">
-                    <h4>Add Skills</h4>
-                    
-                  </div>
-                  <hr>
-                  <%= form.fields_for :skills do |s| %>
-                    <%= s.label :name, class: "form-label" %>
-                    <%= s.text_field :name, class: "form-control" %>
-                  <% end %>
-                  
-                </div>
+
+
+            <% frame_id = dom_id(SkillCategory.new, "name_turbo_frame") %>
+            <%= turbo_frame_tag frame_id do %>
+              <div class="section-heading">
+                <h2>Skill Categories</h2>
+                <%= link_to  "Cancle", portfolio_path(@portfolio) %>  
               </div>
-            </div>
+              <hr>
+              <div class="row mb-3">
+                <div class="col-10"><%= form.text_field :name, placeholder: "Name", class: "form-control" %></div>
+                <div class="col-2"><%= form.submit "Save", class: "d-grid btn btn-outline-primary" %></div>
+              </div>
+            <% end %>
             
             <hr>
           <div>

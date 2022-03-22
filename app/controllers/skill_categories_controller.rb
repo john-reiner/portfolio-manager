@@ -68,6 +68,6 @@ class SkillCategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def skill_category_params
-      params.require(:skill_category).permit(:portfolio_id, :name, skills_attributes: [:name])
+      params.require(:skill_category).permit(:portfolio_id, :name)
     end
 end

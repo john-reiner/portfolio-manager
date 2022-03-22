@@ -10,6 +10,7 @@ class SkillsController < ApplicationController
   
   # GET /skills/1 or /skills/1.json
   def show
+    # byebug
   end
   
   # GET /skills/new
@@ -19,7 +20,7 @@ class SkillsController < ApplicationController
   
   # GET /skills/1/edit
   def edit
-    
+
   end
 
   # POST /skills or /skills.json
@@ -42,7 +43,6 @@ class SkillsController < ApplicationController
   def update
     respond_to do |format|
       if @skill.update(skill_params)
-        format.turbo_stream
         format.html { redirect_to portfolio_skill_category_path(@portfolio, @skill_category), notice: "Skill was successfully updated." }
       else
         format.turbo_stream { render turbo_stream: turbo_stream.replace("#{helpers.dom_id(@skill)}_form", partial: "form", locals: { portfolio: @portfolio, skill_category: @skill_category, skill: @skill })}
@@ -54,7 +54,6 @@ class SkillsController < ApplicationController
   # DELETE /skills/1 or /skills/1.json
   def destroy
     @skill.destroy
-
     respond_to do |format|
       format.turbo_stream { render turbo_stream: turbo_stream.remove("#{helpers.dom_id(@skill)}_item")}
       format.html { redirect_to skills_url, notice: "Skill was successfully destroyed." }

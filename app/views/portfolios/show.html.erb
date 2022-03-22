@@ -138,10 +138,21 @@
         <div class="row">
             <div class="col section mt-3 mb-5">
               <div class="row">
-                <div class="col section-heading">
-                  <h2>Skill Categories</h2>
-                  <%= link_to  "Add", new_portfolio_skill_category_path(@portfolio) %>            
-                </div>
+
+
+                <% frame_id = dom_id(SkillCategory.new, "name_turbo_frame") %>
+                <%= form_with model: [@portfolio, SkillCategory.new], data: {turbo_frame: frame_id} do %>
+                    <%= turbo_frame_tag dom_id(SkillCategory.new, "name_turbo_frame") do %>
+
+                      <div class="section-heading">
+                      <h2>Skill Categories</h2>
+                      <%= link_to  "Add", new_portfolio_skill_category_path(@portfolio) %>  
+                      </div>
+                      <hr>
+                    <% end %>
+                <% end %>
+
+
               </div>
               <div class="row">
                 <div class="col section-content">

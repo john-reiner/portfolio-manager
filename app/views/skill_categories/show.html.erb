@@ -2,13 +2,23 @@
 <div class="container">
   <div class="row">
     <div class="col">
-
-      <%= render  "skills/form", portfolio: @portfolio, skill_category: @skill_category, skill: Skill.new %>
-
-      <ul id="skills">
+      <div class="section mt-5">
+        <div class="section-heading">
+          <h2><%= @skill_category.name %></h2>
+          <%= link_to  "Edit", "#" %>
         
-        <%= render  @skills, portfolio: @portfolio, skill_category: @skill_category %>
-      </ul>
+        </div>
+        <hr>
+        <%= render  "skills/form", portfolio: @portfolio, skill_category: @skill_category, skill: Skill.new %>
+        <hr>
+        <div class="row">
+          <div class="col" id="skills"> 
+            <%= render @skills, portfolio: @portfolio, skill_category: @skill_category %>
+          </div>
+        </div>
+        </table>      
+      </div>
+
     </div>
   </div>
 </div>

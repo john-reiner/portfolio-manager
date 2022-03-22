@@ -111,6 +111,9 @@ background-color: #555;
     width: 100%;
 }
 
-.project-photos-container {
-    
+.skill-row {
+    border: solid #555 1px;
+    padding: .5em;
+    margin: .5em;
+    border-radius: 5px;
 }
