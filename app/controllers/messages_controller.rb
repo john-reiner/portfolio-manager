@@ -26,6 +26,7 @@ class MessagesController < ApplicationController
     @message.portfolio_id = params["portfolio_id"]
     respond_to do |format|
       if @message.save
+        MessageMailer.with(portfolio: @portfolio, message: @message).message_created.deliver_later
         format.json { render json: @message, status: :created }
       else
         format.json { render json: @message.errors, status: :unprocessable_entity }

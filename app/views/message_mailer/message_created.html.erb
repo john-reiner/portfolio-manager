@@ -1,0 +1,10 @@
+<h1>New Message sent from your portfolio!</h1>
+
+<p>Someone with the name: <%= Message.last.name %> and email address: <%= Message.last.email %></p>
+
+<p>Their message:</p>
+<p><%= Message.last.message %></p>
+
+<%= mail_to  Message.last.email do %>
+  <strong>Click here to reply to their email!</strong>
+<% end %>
