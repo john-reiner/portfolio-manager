@@ -16,9 +16,13 @@
             <%= render @skills, portfolio: @portfolio, skill_category: @skill_category %>
           </div>
         </div>
-        </table>      
+        <hr>
+        <div class="section-heading">
+          <%= link_to  "back", @portfolio %>
+          <%= button_to "Delete Skill Category", portfolio_skill_category_path(@portfolio, @skill_category), method: :delete, class: "btn btn-outline-danger" %>
+        
+        </div>
       </div>
-
     </div>
   </div>
 </div>
