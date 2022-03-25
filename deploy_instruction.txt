@@ -1,8 +1,0 @@
-*****UNCOMMENT LINES 20,21,22 IN config/database.yml 
-
-sudo chown -R $USER:$USER .
-docker-compose build
-docker-compose run web rake db:create
-docker-compose run web rake db:migrate
-docker-compose run web rake db:seed
-docker-compose up

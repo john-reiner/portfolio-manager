@@ -22,15 +22,6 @@ default: &default
   # password: password
   pool: 5
 
-staging:
-  adapter: postgresql
-  encoding: unicode
-  host: <%= ENV['POSTGRESQL_HOST'] %>
-  username: <%= ENV['POSTGRESQL_USER_NAME'] %>
-  password: <%= ENV['POSTGRESQL_PASSWORD'] %>
-  pool: 5
-  database: <%= ENV['POSTGRESQL_DB'] %>
-
 development:
   <<: *default
   database: portfolio_manager_development
