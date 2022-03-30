@@ -12,7 +12,7 @@ class MessageMailer < ApplicationMailer
     @email = params[:email]
 
     mail(
-        from: "messages@portfoliomanager.com",
+        from: "john.a.reiner@gmail.com",
         to: "john.a.reiner@gmail.com", 
         subject: "New Message from your Portfolio contact form"
       )
