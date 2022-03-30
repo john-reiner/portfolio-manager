@@ -6,10 +6,11 @@ class MessageMailer < ApplicationMailer
   #   en.message_mailer.message_created.subject
   #
   def message_created
+
     @portfolio = params[:portfolio]
     @message = params[:message]
     @email = params[:email]
-    
+
     mail(
         from: "messages@portfoliomanager.com",
         to: "john.a.reiner@gmail.com", 
