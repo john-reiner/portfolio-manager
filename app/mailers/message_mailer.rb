@@ -6,14 +6,14 @@ class MessageMailer < ApplicationMailer
   #   en.message_mailer.message_created.subject
   #
   def message_created
-    @greeting = "Hi #{Portfolio.first.email}"
-    # @portfolio = params[:portfolio]
-    # @message = params[:message]
-
+    @portfolio = params[:portfolio]
+    @message = params[:message]
+    @email_address = params[:email]
+    
     mail(
         from: "messages@portfoliomanager.com",
-        to: Portfolio.first.email, 
+        to: @portfolio.email, 
         subject: "New Message from your Portfolio contact form"
-      ) 
+      )
   end
 end

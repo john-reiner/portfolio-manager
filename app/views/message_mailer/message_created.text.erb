@@ -1,8 +1,8 @@
 New Message sent from your portfolio!
 
-Someone with the name: <%= Message.last.name %> and email address: <%= Message.last.email %>
+Someone with the name: <%= @message.name %> and email address: <%= @message.email %>
 
 Their message:
-<%= Message.last.message %>
+<%= @message.message %>
 
 
