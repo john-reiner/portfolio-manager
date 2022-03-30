@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "messages@resumemanager.com"
+  default from: "john.a.reiner@gmail.com"
   layout "mailer"
 end
