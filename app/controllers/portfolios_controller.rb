@@ -8,7 +8,7 @@ class PortfoliosController < ApplicationController
   end
 
   def public
-    # byebug
+
   end
 
   # GET /portfolios/new
