@@ -6,13 +6,13 @@ class MessageMailer < ApplicationMailer
   #   en.message_mailer.message_created.subject
   #
   def message_created
-
-    @portfolio = params[:portfolio]
+    
+    
     @message = params[:message]
-    @email = params[:email]
+    # @message = Message.last
 
     mail(
-        from: "john.a.reiner@gmail.com",
+        from: "noreply@manager-herokuapp.com",
         to: "john.a.reiner@gmail.com", 
         subject: "New Message from your Portfolio contact form"
       )
