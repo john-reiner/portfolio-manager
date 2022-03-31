@@ -3,6 +3,7 @@ require_relative "application"
 
 # Initialize the Rails application.
 Rails.application.initialize!
+# tmmyqioohipyiodt
 
 ActionMailer::Base.smtp_settings = {
     user_name: 'apikey',
@@ -13,3 +14,6 @@ ActionMailer::Base.smtp_settings = {
     authentication: :plain,
     enable_starttls_auto: true
 }
+
+
+
